@@ -1,5 +1,7 @@
 package me.daemon.view.common
 
+import android.util.SparseArray
+
 /**
  * @author daemon
  * @since 2019-02-22 00:00
@@ -15,40 +17,40 @@ enum class Gravity {
 
     // combination
     LEFT_TOP(
-            LEFT,
-            TOP
+        LEFT,
+        TOP
     ),
     LEFT_CENTER(
-            LEFT,
-            CENTER_VERTICAL
+        LEFT,
+        CENTER_VERTICAL
     ),
     LEFT_BOTTOM(
-            LEFT,
-            BOTTOM
+        LEFT,
+        BOTTOM
     ),
     CENTER_TOP(
-            CENTER_HORIZONTAL,
-            TOP
+        CENTER_HORIZONTAL,
+        TOP
     ),
     CENTER(
-            CENTER_HORIZONTAL,
-            CENTER_VERTICAL
+        CENTER_HORIZONTAL,
+        CENTER_VERTICAL
     ),
     CENTER_BOTTOM(
-            CENTER_HORIZONTAL,
-            BOTTOM
+        CENTER_HORIZONTAL,
+        BOTTOM
     ),
     RIGHT_TOP(
-            RIGHT,
-            TOP
+        RIGHT,
+        TOP
     ),
     RIGHT_CENTER(
-            RIGHT,
-            CENTER_VERTICAL
+        RIGHT,
+        CENTER_VERTICAL
     ),
     RIGHT_BOTTOM(
-            RIGHT,
-            BOTTOM
+        RIGHT,
+        BOTTOM
     );
 
     val value: Int
@@ -62,30 +64,27 @@ enum class Gravity {
     }
 
     companion object {
-        private val map = HashMap<Int, Gravity>()
+        private val map = SparseArray<Gravity>()
 
         init {
             for (gravity in values()) {
-                map[gravity.value] = gravity
+                map.put(gravity.value, gravity)
             }
         }
 
-        fun from(gravity: Int): Gravity {
-            return map[gravity] ?: throw IllegalArgumentException("unknown gravity: $gravity")
-        }
+        fun from(gravity: Int) =
+            map[gravity] ?: throw IllegalArgumentException("unknown gravity: $gravity")
 
         /**
          * calibrate  basic gravity to combination gravity
          */
-        fun calibrate(gravity: Gravity): Gravity {
-            return when (gravity) {
-                Gravity.LEFT -> Gravity.LEFT_CENTER
-                Gravity.TOP -> Gravity.CENTER_TOP
-                Gravity.RIGHT -> Gravity.RIGHT_CENTER
-                Gravity.BOTTOM -> Gravity.CENTER_BOTTOM
-                Gravity.CENTER_VERTICAL, Gravity.CENTER_HORIZONTAL -> Gravity.CENTER
-                else -> gravity
-            }
+        fun calibrate(gravity: Gravity) = when (gravity) {
+            LEFT -> LEFT_CENTER
+            TOP -> CENTER_TOP
+            RIGHT -> RIGHT_CENTER
+            BOTTOM -> CENTER_BOTTOM
+            CENTER_VERTICAL, CENTER_HORIZONTAL -> CENTER
+            else -> gravity
         }
     }
 
