@@ -7,22 +7,22 @@ import android.content.Context
  * @since 2019-06-27 11:17
  */
 
-fun dp2px(context: Context, dp: Float): Int {
+fun dp2px(context: Context, dp: Float): Float {
     val density = context.resources.displayMetrics.density
-    return (density * dp + 0.5f).toInt()
+    return density * dp
 }
 
-fun px2dp(context: Context, px: Float): Int {
+fun px2dp(context: Context, px: Float): Float {
     val density = context.resources.displayMetrics.density
-    return (px / density + 0.5f).toInt()
+    return px / density
 }
 
-fun sp2px(context: Context, sp: Float): Int {
+fun sp2px(context: Context, sp: Float): Float {
     val scaleDensity = context.resources.displayMetrics.scaledDensity
-    return (scaleDensity * sp + 0.5f).toInt()
+    return scaleDensity * sp
 }
 
-fun px2sp(context: Context, px: Float): Int {
+fun px2sp(context: Context, px: Float): Float {
     val scaleDensity = context.resources.displayMetrics.scaledDensity
-    return (px / scaleDensity + 0.5f).toInt()
+    return px / scaleDensity
 }
