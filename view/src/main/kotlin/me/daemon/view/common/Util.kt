@@ -3,7 +3,7 @@ package me.daemon.view.common
 import android.content.Context
 
 /**
- * @author yc
+ * @author daemon
  * @since 2019-06-27 11:17
  */
 
