@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
-    id 'com.jfrog.bintray' version '1.8.4'
+    id 'com.jfrog.bintray' version '1.8.5'
 }
 
 android {
@@ -38,12 +38,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation deps.kotlin
+    implementation deps.x.appcompat
+    testImplementation deps.junit
+    androidTestImplementation deps.x.testrunner
+    androidTestImplementation deps.x.espresso
 }
 
 ext {
