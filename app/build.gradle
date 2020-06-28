@@ -32,4 +32,6 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.x.testrunner
     androidTestImplementation deps.x.espresso
+
+    implementation 'me.daemon:androidviewcommon:0.0.6'
 }
