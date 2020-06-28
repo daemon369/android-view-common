@@ -8,7 +8,11 @@ buildscript {
         target_sdk_version = 29
         kotlin_version = '1.3.72'
 
-        library_version = '0.0.4'
+        pub = [
+                group   : 'me.daemon',
+                artifact: 'androidviewcommon',
+                version : '0.0.5'
+        ]
 
         deps = [
                 kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",

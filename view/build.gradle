@@ -51,16 +51,12 @@ ext {
 
     bintrayOverride = false
 
-    publishedGroupId = 'me.daemon'
     libraryName = 'AndroidViewCommon'
-    artifact = 'androidviewcommon'
 
     libraryDescription = 'Providing common view stuff'
 
     siteUrl = 'https://github.com/daemon369/AndroidViewCommon'
     gitUrl = 'https://github.com/daemon369/AndroidViewCommon.git'
-
-    libraryVersion = library_version
 
     developerId = 'daemon369'
     developerName = 'daemon369'
@@ -71,8 +67,113 @@ ext {
     allLicenses = ["Apache-2.0"]
 }
 
-apply from: 'https://gist.githubusercontent.com/daemon369/39f43c9406312f3b565b9f8a42923b10/raw/5d4e8f6c030a5b53f3cd7017e1c2b07882b0b72e/upload.gradle'
+//apply from: 'https://gist.githubusercontent.com/daemon369/39f43c9406312f3b565b9f8a42923b10/raw/5d4e8f6c030a5b53f3cd7017e1c2b07882b0b72e/upload.gradle'
 
 bintray {
     override = bintrayOverride
 }
+
+
+apply plugin: 'maven-publish'
+
+afterEvaluate {
+    publishing {
+        publications {
+            bintray(MavenPublication) {
+                from components.release
+
+                groupId = pub.group
+                artifactId = pub.artifact
+                version = pub.version
+
+                artifact(sourcesJar)
+            }
+        }
+    }
+}
+
+apply plugin: 'com.jfrog.bintray'
+
+group = pub.group
+version = pub.version
+
+//install {
+//    repositories.mavenInstaller {
+//        pom.project {
+//            packaging 'aar'
+//            groupId publishedGroupId
+//            artifactId artifact
+//
+//            name libraryName
+//            description libraryDescription
+//            url siteUrl
+//
+//            licenses {
+//                license {
+//                    name licenseName
+//                    url licenseUrl
+//                }
+//            }
+//            developers {
+//                developer {
+//                    id developerId
+//                    name developerName
+//                    email developerEmail
+//                }
+//            }
+//            scm {
+//                connection gitUrl
+//                developerConnection gitUrl
+//                url siteUrl
+//            }
+//        }
+//    }
+//}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    excludes = ['**/*.kt'] // < ---- Exclude all kotlin files from javadoc file.
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    archiveClassifier.set('javadoc')
+//    from javadoc.destinationDir
+//}
+
+artifacts {
+//    archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = libraryDescription
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = allLicenses
+        dryRun = false
+        publish = true
+        override = false
+        publicDownloadNumbers = true
+        version {
+            desc = libraryDescription
+        }
+    }
+    publications = ['bintray']
+}
+

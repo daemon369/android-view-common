@@ -1,6 +1,5 @@
 package me.daemon.view.common
 
-import android.content.Context
 
 /**
  * @author daemon
