@@ -69,11 +69,3 @@ inline fun View.drawable(@DrawableRes resId: Int): Drawable =
 
 inline fun Fragment.drawable(@DrawableRes resId: Int): Drawable =
     resources.drawable(resId)
-
-
-
-
-
-
-
-
