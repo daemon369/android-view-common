@@ -57,7 +57,7 @@ ext {
     pub = [
             group   : 'me.daemon',
             artifact: 'androidviewcommon',
-            version : '0.0.8'
+            version : '0.0.9'
     ]
 
     bintrayRepo = 'maven'
