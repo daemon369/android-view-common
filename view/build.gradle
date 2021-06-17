@@ -5,37 +5,11 @@ plugins {
     id 'kotlin-android'
 }
 
+apply from: "$rootDir/gradle/library_base.gradle"
+
 android {
-    compileSdkVersion compile_sdk_version
-
-    defaultConfig {
-        minSdkVersion min_sdk_version
-        targetSdkVersion target_sdk_version
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-    }
-
-    compileOptions {
-        kotlinOptions.freeCompilerArgs += ['-module-name', "me.daemon.view.common"]
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 
     buildFeatures {
@@ -44,42 +18,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation Libraries.K.std
     compileOnly Libraries.X.fragment
-    testImplementation deps.junit
-    androidTestImplementation deps.x.testrunner
-    androidTestImplementation deps.x.espresso
-}
-
-ext {
-
-    pub = [
-            group   : 'me.daemon',
-            artifact: 'androidviewcommon',
-            version : '0.0.9'
-    ]
-
-    bintrayRepo = 'maven'
-    bintrayName = 'androidviewcommon'
-
-    bintrayOverride = false
-
-    libraryName = 'AndroidViewCommon'
-
-    libraryDescription = 'Providing common view stuff'
-
-    siteUrl = 'https://github.com/daemon369/AndroidViewCommon'
-    gitUrl = 'https://github.com/daemon369/AndroidViewCommon.git'
-
-    developerId = 'daemon369'
-    developerName = 'daemon369'
-    developerEmail = 'daemon336699@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
 }
 
 apply from: "$rootDir/gradle/maven-publish.gradle"
