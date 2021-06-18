@@ -1,7 +1,5 @@
 # AndroidViewCommon
 
-[TOC]
-
 ----
 
 ## 使用方法
