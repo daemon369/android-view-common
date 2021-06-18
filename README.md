@@ -25,3 +25,5 @@ dependencies {
 ```
 
 将其中的`x`、`y`、`z`替换为真实版本号
+
+可以在中央仓库<https://mvnrepository.com/artifact/io.github.daemon369/android-view-common>获取最新版本号
