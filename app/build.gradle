@@ -1,3 +1,4 @@
+import me.daemon.plugin.Configuration
 import me.daemon.plugin.Libraries
 
 plugins {
@@ -26,6 +27,6 @@ dependencies {
     implementation Libraries.X.appCompat
     implementation Libraries.X.constraint
 
-//    implementation 'me.daemon:androidviewcommon:0.0.6'
-    implementation project(':view')
+    implementation "${Configuration.groupId}:${Configuration.artifactId}:0.1.0"
+//    implementation project(':view')
 }
