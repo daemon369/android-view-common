@@ -6,7 +6,6 @@ plugins {
 }
 
 apply from: "$rootDir/gradle/base.gradle"
-apply plugin: 'kotlin-android-extensions'
 
 android {
     defaultConfig {
