@@ -27,6 +27,6 @@ dependencies {
     implementation Libraries.X.appCompat
     implementation Libraries.X.constraint
 
-    implementation "${Configuration.groupId}:${Configuration.artifactId}:0.1.0"
-//    implementation project(':view')
+//    implementation "${Configuration.groupId}:${Configuration.artifactId}:0.1.0"
+    implementation project(':view')
 }
