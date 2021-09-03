@@ -18,7 +18,7 @@ object Libraries {
         const val navigation = "2.3.5"
         const val constraintLayout = "2.0.4"
 
-        const val gradlePlugin = "4.1.2"
+        const val gradlePlugin = "7.0.2"
         const val junit = "4.13.2"
         const val xJunit = "1.1.2"
         const val espresso = "3.3.0"
