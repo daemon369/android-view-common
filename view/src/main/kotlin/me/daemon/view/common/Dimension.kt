@@ -8,6 +8,8 @@ import android.content.res.Resources
 import android.util.TypedValue
 import android.view.View
 import androidx.fragment.app.Fragment
+import me.daemon.annotation.RequireInfrastructureApp
+import me.daemon.infrastructure.application.application
 
 
 inline fun Resources.dp2px(dp: Float): Float =
@@ -55,3 +57,17 @@ inline fun Dialog.px2dp(px: Float): Float = context.px2dp(px)
 inline fun Dialog.sp2px(sp: Float): Float = context.sp2px(sp)
 
 inline fun Dialog.px2sp(px: Float): Float = context.px2sp(px)
+
+
+@RequireInfrastructureApp
+inline fun dp2px(dp: Float): Float = application.dp2px(dp)
+
+@RequireInfrastructureApp
+inline fun px2dp(px: Float): Float = application.px2dp(px)
+
+@RequireInfrastructureApp
+inline fun sp2px(sp: Float): Float = application.sp2px(sp)
+
+@RequireInfrastructureApp
+inline fun px2sp(px: Float): Float = application.px2sp(px)
+
