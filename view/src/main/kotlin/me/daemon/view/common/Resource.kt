@@ -13,6 +13,8 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import me.daemon.annotation.RequireInfrastructureApp
+import me.daemon.infrastructure.application.application
 
 
 inline val Resources.screenWidth: Int
@@ -104,3 +106,27 @@ inline fun Dialog.string(@StringRes resId: Int): String = context.string(resId)
 
 inline fun Dialog.string(@StringRes resId: Int, vararg arg: Any): String =
     context.string(resId, *arg)
+
+
+inline val screenWidth: Int
+    @RequireInfrastructureApp
+    get() = application.screenWidth
+
+inline val screenHeight: Int
+    @RequireInfrastructureApp
+    get() = application.screenHeight
+
+@RequireInfrastructureApp
+inline fun @receiver:ColorRes Int.color(): Int = application.color(this)
+
+@RequireInfrastructureApp
+inline fun @receiver:DimenRes Int.dimen(): Float = application.dimen(this)
+
+@RequireInfrastructureApp
+inline fun @receiver:DrawableRes Int.drawable(): Drawable = application.drawable(this)
+
+@RequireInfrastructureApp
+inline fun @receiver:StringRes Int.string(): String = application.string(this)
+
+@RequireInfrastructureApp
+inline fun @receiver:StringRes Int.string(vararg arg: Any): String = application.string(this, *arg)
