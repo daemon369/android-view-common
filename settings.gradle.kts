@@ -1,4 +1,4 @@
-include ':app', ':view'
+include (":app", ":view")
 
 enableFeaturePreview("VERSION_CATALOGS")
 
