@@ -1,5 +1,3 @@
-import me.daemon.plugin.Libraries
-
 buildscript {
     repositories {
         google()
