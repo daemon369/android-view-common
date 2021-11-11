@@ -18,8 +18,8 @@ android {
 
 dependencies {
     compileOnly(Libraries.X.fragment)
-    implementation("io.github.daemon369:annotation:0.1.0")
-    implementation("io.github.daemon369:android-infrastructure-application:0.1.1")
+    implementation(libs.daemon.annotation)
+    implementation(libs.daemon.infrastructure.application)
 }
 
 apply(from = "$rootDir/gradle/maven-publish.gradle")
