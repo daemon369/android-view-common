@@ -1,5 +1,3 @@
-import me.daemon.plugin.Libraries
-
 plugins {
     id("com.android.application")
 }
@@ -24,9 +22,9 @@ android {
 }
 
 dependencies {
-    implementation(Libraries.X.coreKtx)
-    implementation(Libraries.X.appCompat)
-    implementation(Libraries.X.constraint)
+    implementation(libs.x.core.ktx)
+    implementation(libs.x.appcompat)
+    implementation(libs.x.constraintlayout)
 
 //    implementation("${Configuration.groupId}:${Configuration.artifactId}:0.1.0")
     implementation(project(":view"))
