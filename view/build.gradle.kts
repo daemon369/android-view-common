@@ -1,5 +1,3 @@
-import me.daemon.plugin.Libraries
-
 plugins {
     id("com.android.library")
 }
@@ -17,7 +15,7 @@ android {
 }
 
 dependencies {
-    compileOnly(Libraries.X.fragment)
+    compileOnly(libs.x.fragment)
     implementation(libs.daemon.annotation)
     implementation(libs.daemon.infrastructure.application)
 }
