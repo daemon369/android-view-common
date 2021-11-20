@@ -5,7 +5,6 @@ apply plugin: 'kotlin-android'
 
 
 import me.daemon.plugin.Configuration
-import me.daemon.plugin.Libraries
 
 android {
     compileSdkVersion Configuration.compileSdkVersion
@@ -29,7 +28,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation platform(Libraries.K.bom)
+    implementation platform("org.jetbrains.kotlin:kotlin-bom")
     implementation libs.kotlin
 
     testImplementation libs.junit
