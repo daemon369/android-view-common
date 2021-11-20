@@ -30,9 +30,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation platform(Libraries.K.bom)
-    implementation Libraries.K.std
+    implementation libs.kotlin
 
-    testImplementation Libraries.T.junit
-    androidTestImplementation Libraries.T.xJunit
-    androidTestImplementation Libraries.T.espresso
+    testImplementation libs.junit
+    androidTestImplementation libs.x.junit
+    androidTestImplementation libs.x.espresso.core
 }
