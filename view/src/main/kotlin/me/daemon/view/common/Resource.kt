@@ -16,37 +16,9 @@ import androidx.fragment.app.Fragment
 import me.daemon.annotation.RequireInfrastructureApp
 import me.daemon.infrastructure.application.application
 
-
+@Deprecated("use Context.screenWidth instead", ReplaceWith("Context.screenWidth"))
 inline val Resources.screenWidth: Int
     get() = displayMetrics.widthPixels
-
-inline val Context.screenWidth: Int
-    get() = resources.screenWidth
-
-inline val View.screenWidth: Int
-    get() = resources.screenWidth
-
-inline val Fragment.screenWidth: Int
-    get() = resources.screenWidth
-
-inline val Dialog.screenWidth: Int
-    get() = context.screenWidth
-
-
-inline val Resources.screenHeight: Int
-    get() = displayMetrics.heightPixels
-
-inline val Context.screenHeight: Int
-    get() = resources.screenHeight
-
-inline val View.screenHeight: Int
-    get() = resources.screenHeight
-
-inline val Fragment.screenHeight: Int
-    get() = resources.screenHeight
-
-inline val Dialog.screenHeight: Int
-    get() = context.screenHeight
 
 
 inline fun Resources.color(@ColorRes resId: Int): Int = ResourcesCompat.getColor(this, resId, null)
