@@ -5,17 +5,10 @@ package me.daemon.view.common
 import android.app.Dialog
 import android.content.Context
 import android.content.res.Resources
-import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
 
-
-private val tempMetricsThreadLocal = ThreadLocal<DisplayMetrics>()
-
-private val tempMetrics: DisplayMetrics
-    get() = tempMetricsThreadLocal.get()
-        ?: DisplayMetrics().apply { tempMetricsThreadLocal.set(this) }
 
 val WindowManager.screenWidth: Int
     get() {
